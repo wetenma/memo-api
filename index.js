@@ -22,27 +22,8 @@ const memoValidation = require('./validation/memoValidation');
 const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-/* //3주차때 몽고디비 연결하면서 주석처리함
-//파일로 저장 안 하고, MongoDB에 저장할 거니까 필요없음 
-
-// 메모 파일 경로 설정 (memo.json 파일)
-const memoFile = path.join(__dirname, 'memo.json');
-
-// 서버 시작 시 memo.json 파일이 있다면 그 안의 데이터를 읽어서 memos 배열로 초기화
-
-let memos = [];
-if (fs.existsSync(memoFile)) {
-  const data = fs.readFileSync(memoFile, 'utf-8');
-  memos = JSON.parse(data);
-}
-
-// 메모 배열을 memo.json 파일에 저장하는 함수
-function saveMemosToFile() {
-  fs.writeFileSync(memoFile, JSON.stringify(memos, null, 2));
-}
-*/
 
 // 요청의 본문이 json이면 자동으로 JavaScript로 바꾸는 미들웨어
 app.use(express.json());
