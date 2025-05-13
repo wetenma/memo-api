@@ -49,10 +49,8 @@ app.use(express.json());
 //  /auth/register, /auth/login 연결
 app.use('/auth',authRoutes);
 
-// MongoDB 연결
-// 내 컴퓨터에서 27017번 포트에 실행 중인 MongoDB 서버에 접속해서
-// memoApp이라는 DB에 연결해
-mongoose.connect('mongodb://127.0.0.1:27017/memoApp', {
+
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
